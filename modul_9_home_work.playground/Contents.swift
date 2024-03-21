@@ -254,7 +254,7 @@ var rezerve = NatureReserve(animals: [
 ])
 
 rezerve.life()
-
+// 
 
 
 
