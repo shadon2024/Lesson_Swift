@@ -114,16 +114,11 @@ class Hero {
     private var lifeCount: Int
     
     var isLive: Bool {
-        if lifeCount > 0 {
-            return true
-        } else {
-            return false
-        }
+        return lifeCount > 0
     }
     
     func hit() {
-        self.lifeCount - 1
-        //return lifeCount
+        lifeCount -= 1
     }
     
     init(lifeCount: Int ) {
@@ -139,6 +134,7 @@ print(hero.hit())
 // 6
 class SuperHero: Hero {
     override func hit(){
+        // // Переопределение, чтобы SuperHero не получал повреждений.
     }
 }
 
