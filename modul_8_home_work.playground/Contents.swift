@@ -141,5 +141,4 @@ class SuperHero: Hero {
 let superHero = SuperHero(lifeCount: 5)
 superHero.isLive
 print(superHero.isLive)
-
 print(superHero.hit())
