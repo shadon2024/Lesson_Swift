@@ -138,3 +138,131 @@ balance0 == balance
 
 // balance == balance4
 // Binary operator '==' cannot be applied to operands of type 'Balance' and 'BalanceObject'
+
+
+
+
+
+
+// MARK: Задание 3
+
+//Вам дан протокол и три сущности, которые его реализуют. Добавьте в протокол новый метод. Реализуйте этот метод с помощью расширения протокола. Создайте массив из этих сущностей и вызовите в цикле новый метод у каждого элемента массива.
+
+//Код:
+
+//protocol Dog {
+//    var name: String { get set }
+//    var color: String { get set }
+//}
+
+
+//struct Haski: Dog {
+//    var name: String
+//    var color: String
+//}
+
+
+//class Corgi: Dog {
+//    var name: String
+//    var color: String
+//
+//    init(name: String, color: String) {
+//        self.name = name
+//        self.color = color
+//    }
+//}
+
+
+//struct Hound: Dog {
+//    var name: String
+//    var color: String
+//}
+
+
+//Должны выполняться следующие условия:
+
+//В протокол добавлен метод func speak() -> String.
+//Реализация метода из пункта 1 сделана с помощью расширения.
+//Создан массив, содержащий как минимум один экземпляр каждой сущности.
+//У каждого элемента массива вызван новый метод.
+
+
+// Код:
+
+protocol Dog {
+    var name: String { get set }
+    var color: String { get set }
+    func speak() -> String
+}
+
+extension Dog {
+    func speak() -> String {
+        return "\(speak())"
+    }
+}
+
+struct Haski: Dog {
+    func speak() -> String {
+         return "VOFF"
+    }
+    var name: String
+    var color: String
+}
+
+class Corgi: Dog {
+    func speak() -> String {
+        return "WAF"
+    }
+    var name: String
+    var color: String
+
+    init(name: String, color: String) {
+        self.name = name
+        self.color = color
+    }
+}
+
+struct Hound: Dog {
+    func speak() -> String {
+        return "WOOF"
+    }
+    var name: String
+    var color: String
+}
+
+print("\n")
+let haski = Haski(name: "Haski", color: "black")
+haski.name
+haski.color
+haski.speak()
+print("\(haski.name): \(haski.color), \(haski.speak())")
+
+let corgi = Corgi(name: "Corgi", color: "white")
+corgi.name
+corgi.color
+corgi.speak()
+print("\(corgi.name): \(corgi.color), \(corgi.speak())")
+
+let hound = Hound(name: "Hound", color: "white")
+hound.name
+hound.color
+hound.speak()
+print("\(hound.name): \(hound.color), \(hound.speak())")
+
+
+
+print("\n")
+let dogHaski: [Dog] = [Haski(name: "Haski", color: "black")]
+dogHaski.forEach { item in
+    print("Haski: \(item.speak())")
+}
+
+let dogCorgi: [Dog] = [Corgi(name: "Corgi", color: "white")]
+dogCorgi.forEach { item in
+    print("Corgi: \(item.speak())")
+}
+
+let dogHound: [Dog] = [Hound(name: "Hound", color: "white")]
+dogHound.forEach { item in
+    print("\(hound.name): \(item.speak())")
+}
