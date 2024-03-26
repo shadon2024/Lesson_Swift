@@ -266,3 +266,5 @@ let dogHound: [Dog] = [Hound(name: "Hound", color: "white")]
 dogHound.forEach { item in
     print("\(hound.name): \(item.speak())")
 }
+// test
+// test 10
