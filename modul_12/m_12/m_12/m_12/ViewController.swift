@@ -30,7 +30,8 @@ class ViewController: UIViewController {
     
     private lazy var labelThree: UILabel = {
         let label = UILabel()
-        let string = "Peach, pear"
+        //let string = "Peach, pear"
+        let string = Constans.Text.text3
         let attributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.green,
             .backgroundColor: UIColor.black,
