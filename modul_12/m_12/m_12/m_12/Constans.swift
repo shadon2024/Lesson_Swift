@@ -16,7 +16,7 @@ enum Constans {
     }
     
     enum Fonts {
-        static var ui30Regular: UIFont? {
+        static var ui40Regular: UIFont? {
             UIFont(name: "Inter-Regular", size: 30)
         }
         
@@ -30,11 +30,11 @@ enum Constans {
         
         
         static var systemHeadingFruits: UIFont {
-            UIFont.systemFont(ofSize: 30, weight: .regular)
+            UIFont.systemFont(ofSize: 40, weight: .regular)
         }
-        
+
         static var systemTextFruits: UIFont {
-            UIFont.systemFont(ofSize: 22)
+            UIFont.systemFont(ofSize: 30)
         }
     }
     
