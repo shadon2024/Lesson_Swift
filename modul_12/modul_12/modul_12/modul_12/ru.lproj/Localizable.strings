@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  modul_12
+
+  Created by Admin on 27.03.2024.
+  
+*/
+
+
+"Heading" = "Заголовок";
+"Text1" = "Текст1";
+"Hello, world" = "Привет, мир";
