@@ -10,9 +10,28 @@ import UIKit
 class ProgramTableCell: UITableViewCell {
 
     private let labelsStack = UIStackView()
-    private let nameLabel = UILabel()
-    private let surnameLabel = UILabel()
+    //private let nameLabel = UILabel()
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .boldSystemFont(ofSize: 20)
+        return label
+    }()
+    
+    //private let surnameLabel = UILabel()
+    
+    private let surnameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 20)
+        return label
+    }()
+    
     private let phoneLabel = UILabel()
+    
+    private let emailImg = UIImageView()
+    private let cityImg = UIImageView()
     
     private let phoneImage = UIImageView()
     
@@ -36,7 +55,7 @@ class ProgramTableCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        [nameLabel, surnameLabel, phoneLabel].forEach { $0.text = nil}
+        [nameLabel, surnameLabel ].forEach { $0.text = nil}
         backgroundColor = .white
     }
     
@@ -150,27 +169,78 @@ class ProgramTableCell: UITableViewCell {
             multiplier: 1,
             constant: 16
         ).isActive = true
+        
+        contentView.addSubview(emailImg)
+        emailImg.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(
+            item: emailImg,
+            attribute: .centerY,
+            relatedBy: .equal,
+            toItem: phoneImage,
+            attribute: .centerY,
+            multiplier: 1,
+            constant: 0
+        ).isActive = true
+        
+        NSLayoutConstraint(
+            item: emailImg,
+            attribute: .leading,
+            relatedBy: .equal,
+            toItem: phoneImage,
+            attribute: .trailing,
+            multiplier: 1,
+            constant: 16
+        ).isActive = true
+        
+        contentView.addSubview(cityImg)
+        cityImg.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint(
+            item: cityImg,
+            attribute: .centerY,
+            relatedBy: .equal,
+            toItem: emailImg,
+            attribute: .centerY,
+            multiplier: 1,
+            constant: 0
+        ).isActive = true
+        
+        NSLayoutConstraint(
+            item: cityImg,
+            attribute: .leading,
+            relatedBy: .equal,
+            toItem: emailImg,
+            attribute: .trailing,
+            multiplier: 1,
+            constant: 16
+        ).isActive = true
     }
     
     private func setupUI() {
         labelsStack.axis = .vertical
         labelsStack.spacing = 10
         
-        nameLabel.font = .boldSystemFont(ofSize: 20)
+        //nameLabel.font = .systemFont(ofSize: 20)
         nameLabel.textAlignment = .center
+        //nameLabel.textAlignment =
         
-        surnameLabel.font = .systemFont(ofSize: 17)
+        //surnameLabel.font = .systemFont(ofSize: 10)
         surnameLabel.textAlignment = .center
         
-        phoneImage.image = UIImage(systemName: "phone.circle.fill")
+        phoneImage.image = UIImage(systemName: "phone.fill")
+        emailImg.image = UIImage(systemName: "envelope.fill")
+        cityImg.image = UIImage(systemName: "building.2.fill")
     }
     
     func configure(width model: UserInfo) {
-        nameLabel.text = model.name
-        surnameLabel.text = model.surname
-        phoneLabel.text = model.phone
+        nameLabel.text = model.name + " " + (model.surname ?? "")
+        //surnameLabel.text = model.surname
         
         surnameLabel.isHidden = model.surname == nil
+        
+        emailImg.isHidden = model.email == nil
+        cityImg.isHidden = model.city == nil
     }
     
     

@@ -12,24 +12,26 @@ class ProgramViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let labelContainer = UIView()
     private let headerLabel = UILabel()
+    let contactsService = ContactsService()
     
-    private let contactsService = ContactsService()
+
+
     
-    
+    var infoUser: [UserInfo] = []
+     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
-        tableView.register(UINib(nibName: "CustomTableCell", bundle: nil), forCellReuseIdentifier: "CustomTableCell")
+
         tableView.register(ProgramTableCell.self, forCellReuseIdentifier: "ProgramTableCell")
+
         tableView.dataSource = self
-        
+        tableView.delegate = self
         
         setupConstraints()
         setupViews()
+        
     }
     
     private func setupConstraints() {
@@ -79,7 +81,7 @@ class ProgramViewController: UIViewController {
         
         
         tableView.tableHeaderView = labelContainer
-        labelContainer.frame = CGRect(x: 0, y: 0, width: 200, height: 30)
+        labelContainer.frame = CGRect(x: 0, y: 0, width: 200, height: 70)
         
         
         labelContainer.addSubview(headerLabel)
@@ -104,7 +106,7 @@ class ProgramViewController: UIViewController {
             toItem: headerLabel.superview,
             attribute: .bottom,
             multiplier: 1,
-            constant: 0
+            constant: -20
         ).isActive = true
         
         NSLayoutConstraint(
@@ -123,6 +125,7 @@ class ProgramViewController: UIViewController {
         headerLabel.text = "Контакты"
         headerLabel.font = .boldSystemFont(ofSize: 24)
         headerLabel.textColor = .link
+        //headerLabel.frame = CGRect( x: 30, y: 70, width: 100, height: 50)
         headerLabel.textAlignment = .center
     }
 
@@ -130,6 +133,7 @@ class ProgramViewController: UIViewController {
 
 
 extension ProgramViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         let keys = contactsService.getKeys()
         return keys.count
@@ -142,38 +146,83 @@ extension ProgramViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let nativeCell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
         let key = contactsService.getKeys()[indexPath.section]
         let contact = contactsService.getContacts(by: key)[indexPath.row]
         
-        var configuration = UIListContentConfiguration.cell()
-        configuration.text = contact.name + " " + (contact.surname ?? "")
-        configuration.secondaryText = contact.phone
         
-        nativeCell.contentConfiguration = configuration
-        
-        // получить ячейку
         let customCell = tableView.dequeueReusableCell(withIdentifier: "ProgramTableCell", for: indexPath) as? ProgramTableCell
         customCell?.configure(width: contact)
         
-        if contact.name == "Андрей" {
-            customCell?.backgroundColor = .red
-        }
-        
-        
-        switch indexPath.section {
-        case 0:
-            return nativeCell
-        default:
-            return customCell ?? nativeCell
-        }
-        
-        //return customCell ?? nativeCell
+        return customCell ?? UITableViewCell()
     }
     
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let key = contactsService.getKeys()[section]
-        return key
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            85
     }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        headerLabel.frame = CGRect( x: 0, y: 0, width: 0, height: 200)
+//        //headerLabel.textAlignment = .center
+//
+//        return headerLabel
+//    }
+    
+
 }
+
+extension ProgramViewController: UITableViewDelegate {
+
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let key = contactsService.getKeys()[indexPath.section]
+        let contact = contactsService.getContacts(by: key)[indexPath.row]
+        
+        //segueToDetailController(with: )
+        tableView.deselectRow(at: indexPath, animated: true)
+ 
+        
+        
+        let customCell = tableView.dequeueReusableCell(withIdentifier: "ProgramTableCell", for: indexPath) as? ProgramTableCell
+        customCell?.configure(width: contact)
+
+        //let VC = DetailViewController(model: contact )
+        //navigationController?.pushViewController(VC, animated: true)
+        //present(VC, animated: true)
+        
+        
+        let storybord = UIStoryboard(name: "Main", bundle: nil)
+        
+                guard let vc2 = storybord.instantiateViewController(identifier: "DetailViewControllerVC") as? DetailViewController  else  {
+                    return
+                }
+        vc2.nameText = contact.name
+        vc2.surnameText = contact.surname
+        vc2.phoneNam = contact.phone
+                    //show(vc2, sender: nil)
+        navigationController?.pushViewController(vc2, animated: true)
+        present(vc2, animated: true)
+
+    }
+    
+//    func segueToDetailController(with user: UserInfo) {
+//
+//
+//        let storybord = UIStoryboard(name: "Main", bundle: nil)
+//
+//        guard let vc2 = storybord.instantiateViewController(identifier: "DetailViewControllerVC") as? DetailViewController  else  {
+//            return
+//        }
+//        //vc2.nameText = user.name
+//        //vc2.surnameText = user.surname
+//            //show(vc2, sender: nil)
+//        navigationController?.pushViewController(vc2, animated: true)
+//    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        85
+//    }
+
+}
+    
+
