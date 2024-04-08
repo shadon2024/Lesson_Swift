@@ -165,12 +165,13 @@ extension ProgramViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.configure(width: contact)
+        //cell.frame = CGRect(x: 0, y: 100, width: 0, height: 100)
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            85
+        return (90.0)
     }
 
 }
