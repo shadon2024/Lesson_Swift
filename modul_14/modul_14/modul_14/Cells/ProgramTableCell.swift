@@ -10,23 +10,24 @@ import UIKit
 class ProgramTableCell: UITableViewCell {
 
     private let labelsStack = UIStackView()
-    //private let nameLabel = UILabel()
+    
+    
     
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .boldSystemFont(ofSize: 20)
+        label.font = Fonts.nameFont
         return label
     }()
     
-    //private let surnameLabel = UILabel()
-    
+  
     private let surnameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20)
+        label.font = Fonts.surnameFont
         return label
     }()
+    
     
     private let phoneLabel = UILabel()
     
@@ -221,12 +222,11 @@ class ProgramTableCell: UITableViewCell {
         labelsStack.axis = .vertical
         labelsStack.spacing = 10
         
-        //nameLabel.font = .systemFont(ofSize: 20)
         nameLabel.textAlignment = .center
-        //nameLabel.textAlignment =
+        //contentView.addSubview(nameLabel)
         
-        //surnameLabel.font = .systemFont(ofSize: 10)
         surnameLabel.textAlignment = .center
+        //contentView.addSubview(surnameLabel)
         
         phoneImage.image = UIImage(systemName: "phone.fill")
         emailImg.image = UIImage(systemName: "envelope.fill")
@@ -234,11 +234,10 @@ class ProgramTableCell: UITableViewCell {
     }
     
     func configure(width model: UserInfo) {
+        
         nameLabel.text = model.name + " " + (model.surname ?? "")
-        //surnameLabel.text = model.surname
-        
+    
         surnameLabel.isHidden = model.surname == nil
-        
         emailImg.isHidden = model.email == nil
         cityImg.isHidden = model.city == nil
     }

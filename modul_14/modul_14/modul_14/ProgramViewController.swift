@@ -31,7 +31,7 @@ class ProgramViewController: UIViewController {
         
         setupConstraints()
         setupViews()
-        
+
     }
     
     private func setupConstraints() {
@@ -123,12 +123,24 @@ class ProgramViewController: UIViewController {
     
     private func setupViews() {
         headerLabel.text = "Контакты"
-        headerLabel.font = .boldSystemFont(ofSize: 24)
-        headerLabel.textColor = .link
-        //headerLabel.frame = CGRect( x: 30, y: 70, width: 100, height: 50)
+        headerLabel.font = Fonts.contactFont
+        headerLabel.textColor = colorHeaderOne
         headerLabel.textAlignment = .center
     }
 
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showVC" {
+//            if let vc = segue.destination as? DetailViewController,
+//               let indexPath = tableView.indexPathForSelectedRow {
+//                let key = contactsService.getKeys()[indexPath.section]
+//                let contact = contactsService.getContacts(by: key)[indexPath.row]
+//                // vc.info = contact
+//                // error: Value of type 'DetailViewController' has no member 'info'
+//                vc.nameText = contact.name
+//            }
+//        }
+//    }
 }
 
 
@@ -146,27 +158,20 @@ extension ProgramViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let key = contactsService.getKeys()[indexPath.section]
         let contact = contactsService.getContacts(by: key)[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProgramTableCell", for: indexPath) as? ProgramTableCell else {
+            return UITableViewCell()
+        }
+        cell.configure(width: contact)
+        return cell
         
-        
-        let customCell = tableView.dequeueReusableCell(withIdentifier: "ProgramTableCell", for: indexPath) as? ProgramTableCell
-        customCell?.configure(width: contact)
-        
-        return customCell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             85
     }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        headerLabel.frame = CGRect( x: 0, y: 0, width: 0, height: 200)
-//        //headerLabel.textAlignment = .center
-//
-//        return headerLabel
-//    }
-    
 
 }
 
@@ -174,55 +179,46 @@ extension ProgramViewController: UITableViewDelegate {
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
         let key = contactsService.getKeys()[indexPath.section]
         let contact = contactsService.getContacts(by: key)[indexPath.row]
-        
-        //segueToDetailController(with: )
+
         tableView.deselectRow(at: indexPath, animated: true)
- 
-        
-        
+
         let customCell = tableView.dequeueReusableCell(withIdentifier: "ProgramTableCell", for: indexPath) as? ProgramTableCell
         customCell?.configure(width: contact)
 
-        //let VC = DetailViewController(model: contact )
-        //navigationController?.pushViewController(VC, animated: true)
-        //present(VC, animated: true)
-        
-        
         let storybord = UIStoryboard(name: "Main", bundle: nil)
-        
-                guard let vc2 = storybord.instantiateViewController(identifier: "DetailViewControllerVC") as? DetailViewController  else  {
-                    return
-                }
-        vc2.nameText = contact.name
-        vc2.surnameText = contact.surname
-        vc2.phoneNam = contact.phone
-                    //show(vc2, sender: nil)
-        navigationController?.pushViewController(vc2, animated: true)
-        present(vc2, animated: true)
+
+        guard let VC2 = storybord.instantiateViewController(identifier: "DetailViewControllerVC") as? DetailViewController  else  {
+            return
+        }
+
+        VC2.icon.image =  UIImage(named: contact.imageName)
+        VC2.nameText = contact.name
+        VC2.surnameText = contact.surname
+        VC2.phoneNam = contact.phone
+        VC2.emailUs = contact.email
+        VC2.birthdayUs = contact.birthDateString
+        VC2.cityUs = contact.city
+        VC2.userId = contact.id
+        VC2.dateLbl = contact.infoCreationDate
+        VC2.twoSurname = contact.name + " " + (contact.surname ?? "")
+        VC2.twoPhone = contact.phone
+
+        navigationController?.pushViewController(VC2, animated: true)
+        present(VC2, animated: true)
 
     }
     
-//    func segueToDetailController(with user: UserInfo) {
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //
+//        let info = infoUser[indexPath.row]
+//        // error: Thread 1: Fatal error: Index out of range
 //
-//        let storybord = UIStoryboard(name: "Main", bundle: nil)
-//
-//        guard let vc2 = storybord.instantiateViewController(identifier: "DetailViewControllerVC") as? DetailViewController  else  {
-//            return
-//        }
-//        //vc2.nameText = user.name
-//        //vc2.surnameText = user.surname
-//            //show(vc2, sender: nil)
-//        navigationController?.pushViewController(vc2, animated: true)
+//        self.performSegue(withIdentifier: "showVC", sender: info)
 //    }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        85
-//    }
-
 }
     
 
