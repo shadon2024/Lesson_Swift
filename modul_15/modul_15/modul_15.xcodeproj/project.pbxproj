@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		085DDE1864BCDAF3DF722EF1 /* Pods_modul_15.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB0E5359748D5D2A8080498 /* Pods_modul_15.framework */; };
+		846F1B172BCF838800707FCE /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F1B162BCF838800707FCE /* UserTableViewCell.swift */; };
+		846F1B192BCF937B00707FCE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F1B182BCF937B00707FCE /* User.swift */; };
+		846F1B1B2BCFE9D700707FCE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F1B1A2BCFE9D700707FCE /* Constant.swift */; };
 		8487A6312BCEA32100C226F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A6302BCEA32100C226F0 /* AppDelegate.swift */; };
 		8487A6332BCEA32100C226F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A6322BCEA32100C226F0 /* SceneDelegate.swift */; };
 		8487A6352BCEA32100C226F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487A6342BCEA32100C226F0 /* ViewController.swift */; };
@@ -16,8 +19,25 @@
 		8487A63D2BCEA32300C226F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8487A63B2BCEA32300C226F0 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		846F1B152BCED4ED00707FCE /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = pattern.proxy;
+			inputFiles = (
+			);
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		6CB0E5359748D5D2A8080498 /* Pods_modul_15.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_modul_15.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		846F1B162BCF838800707FCE /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		846F1B182BCF937B00707FCE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		846F1B1A2BCFE9D700707FCE /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8487A62D2BCEA32100C226F0 /* modul_15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = modul_15.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8487A6302BCEA32100C226F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8487A6322BCEA32100C226F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +94,9 @@
 				8487A6302BCEA32100C226F0 /* AppDelegate.swift */,
 				8487A6322BCEA32100C226F0 /* SceneDelegate.swift */,
 				8487A6342BCEA32100C226F0 /* ViewController.swift */,
+				846F1B162BCF838800707FCE /* UserTableViewCell.swift */,
+				846F1B182BCF937B00707FCE /* User.swift */,
+				846F1B1A2BCFE9D700707FCE /* Constant.swift */,
 				8487A6362BCEA32100C226F0 /* Main.storyboard */,
 				8487A6392BCEA32300C226F0 /* Assets.xcassets */,
 				8487A63B2BCEA32300C226F0 /* LaunchScreen.storyboard */,
@@ -88,7 +111,6 @@
 				85E3FBD667C2966F522A7051 /* Pods-modul_15.debug.xcconfig */,
 				9C5A677D5C55F3242C909BFF /* Pods-modul_15.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -106,6 +128,7 @@
 				A1B9BAA35E60A891C2A87A15 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
+				846F1B152BCED4ED00707FCE /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -121,6 +144,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
@@ -207,9 +233,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				846F1B172BCF838800707FCE /* UserTableViewCell.swift in Sources */,
 				8487A6352BCEA32100C226F0 /* ViewController.swift in Sources */,
 				8487A6312BCEA32100C226F0 /* AppDelegate.swift in Sources */,
+				846F1B192BCF937B00707FCE /* User.swift in Sources */,
 				8487A6332BCEA32100C226F0 /* SceneDelegate.swift in Sources */,
+				846F1B1B2BCFE9D700707FCE /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
