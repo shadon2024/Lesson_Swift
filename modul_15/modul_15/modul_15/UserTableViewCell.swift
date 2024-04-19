@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class UserTableViewCell: UITableViewCell {
 
@@ -31,7 +32,7 @@ class UserTableViewCell: UITableViewCell {
     
     private lazy var subtitleLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        //label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Fonts.textFont
         //label.backgroundColor = .red
@@ -65,7 +66,7 @@ class UserTableViewCell: UITableViewCell {
         avatarImageView.image = user.avatarImage
         titleLabel.text = user.name
         subtitleLabel.text = user.lastName
-        subtitleLabel.numberOfLines = 0
+        subtitleLabel.numberOfLines = 4
         rightLabel.text = user.age
         //avatarImageView.layer.cornerRadius = 50
     }
@@ -76,7 +77,7 @@ class UserTableViewCell: UITableViewCell {
         
         let mainStackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
         mainStackView.axis = .vertical
-        mainStackView.distribution = .fillEqually
+        mainStackView.distribution = .fillProportionally
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         //mainStackView.alignment = .center
         
@@ -93,12 +94,12 @@ class UserTableViewCell: UITableViewCell {
             avatarImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             
             mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            //mainStackView.leadingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16),
+            mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             mainStackView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
             mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
-            rightLabel.leadingAnchor.constraint(equalTo: mainStackView.trailingAnchor),
-            rightLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            rightLabel.leadingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -65),
+            //rightLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -3),
             //rightLabel.centerYAnchor.constraint(equalTo: mainStackView.centerYAnchor),
             rightLabel.topAnchor.constraint(equalTo: mainStackView.topAnchor, constant: 5)
         ])
