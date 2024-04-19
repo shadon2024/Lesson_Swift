@@ -87,7 +87,7 @@ class UserTableViewCell: UITableViewCell {
         contentView.addSubview(rightLabel)
         
         NSLayoutConstraint.activate([
-            avatarImageView.heightAnchor.constraint(equalToConstant: 50),
+            //avatarImageView.heightAnchor.constraint(equalToConstant: 50),
             avatarImageView.widthAnchor.constraint(equalToConstant: 50),
             avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
@@ -96,7 +96,7 @@ class UserTableViewCell: UITableViewCell {
             mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             mainStackView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
 
             rightLabel.leadingAnchor.constraint(equalTo: mainStackView.trailingAnchor, constant: -65),
             //rightLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -3),
