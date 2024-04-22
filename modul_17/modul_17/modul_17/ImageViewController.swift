@@ -36,19 +36,19 @@ class ImageViewController: UIViewController {
         queue.async {
             sleep(arc4random() % 4 )
             
-            if let data = try? Date(contentsOf: self.imageURL){
-                DispatchQueue.main.async { [weak self] in
-                    guard let self = self else {return}
-                    
-                    self.activityIndicator.stopAnimating()
-                    
-                    let view = UIImageView(image: UIImage(data: data))
-                    view.contentMode = .scaleAspectFit
-                    self.stackView.addArrangedSubview(view)
-                    print("Image is added")
-                }
-                print("Done")
-            }
+//            if let data = try? Date(contentsOf: self.imageURL){
+//                DispatchQueue.main.async { [weak self] in
+//                    guard let self = self else {return}
+//
+//                    self.activityIndicator.stopAnimating()
+//
+//                    let view = UIImageView(image: UIImage(data: data))
+//                    view.contentMode = .scaleAspectFit
+//                    self.stackView.addArrangedSubview(view)
+//                    print("Image is added")
+//                }
+//                print("Done")
+//            }
         }
         
     }
