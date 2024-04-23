@@ -14,7 +14,6 @@
 		84E74B622BD674BF004018DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E74B602BD674BF004018DC /* Main.storyboard */; };
 		84E74B642BD674C1004018DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E74B632BD674C1004018DC /* Assets.xcassets */; };
 		84E74B672BD674C1004018DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E74B652BD674C1004018DC /* LaunchScreen.storyboard */; };
-		84E74B6F2BD6766D004018DC /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E74B6E2BD6766D004018DC /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		84E74B632BD674C1004018DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84E74B662BD674C1004018DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84E74B682BD674C1004018DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84E74B6E2BD6766D004018DC /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		99EEA9E25AE9D3E38C4AE72A /* Pods-modul_17.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-modul_17.debug.xcconfig"; path = "Target Support Files/Pods-modul_17/Pods-modul_17.debug.xcconfig"; sourceTree = "<group>"; };
 		DDACC7F87A45D36BDD1AB562 /* Pods_modul_17.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_modul_17.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -77,7 +75,6 @@
 				84E74B5A2BD674BF004018DC /* AppDelegate.swift */,
 				84E74B5C2BD674BF004018DC /* SceneDelegate.swift */,
 				84E74B5E2BD674BF004018DC /* ViewController.swift */,
-				84E74B6E2BD6766D004018DC /* ImageViewController.swift */,
 				84E74B602BD674BF004018DC /* Main.storyboard */,
 				84E74B632BD674C1004018DC /* Assets.xcassets */,
 				84E74B652BD674C1004018DC /* LaunchScreen.storyboard */,
@@ -211,7 +208,6 @@
 			files = (
 				84E74B5F2BD674BF004018DC /* ViewController.swift in Sources */,
 				84E74B5B2BD674BF004018DC /* AppDelegate.swift in Sources */,
-				84E74B6F2BD6766D004018DC /* ImageViewController.swift in Sources */,
 				84E74B5D2BD674BF004018DC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

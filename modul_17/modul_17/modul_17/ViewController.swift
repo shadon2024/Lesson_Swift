@@ -10,9 +10,6 @@ import SnapKit
 
 class ViewController: UIViewController {
 
-    
-    
-    // Массив путей с картинками
     private let imageURLs = [
         "https://img.razrisyika.ru/kart/32/1200/125980-peyzazhi-prirody-28.jpg",
         "https://cloudfront.slrlounge.com/wp-content/uploads/2016/02/when-to-shoot-hdr.jpg",
@@ -54,6 +51,7 @@ class ViewController: UIViewController {
         
     }
 
+    
     private func setupViews() {
         view.addSubview(stackView)
         stackView.snp.makeConstraints { make in
@@ -68,7 +66,7 @@ class ViewController: UIViewController {
 
     
     func asyncGroup() {
-        print("\n----- asyncGroup ---\n")
+        print("\n--- asyncGroup ---\n")
         let dispatchGroup = DispatchGroup()
         
         for i in 0...3 {
@@ -78,7 +76,7 @@ class ViewController: UIViewController {
                            completionQueue: DispatchQueue.main)
             { result, error in
                 guard let image1 = result else {return}
-                print("----finished \(i) приоритет = \(qos_class_self().rawValue)")
+                print("---finished \(i) приоритет = \(qos_class_self().rawValue)")
                 self.images.append(image1)
                 dispatchGroup.leave()
             }
@@ -98,7 +96,7 @@ class ViewController: UIViewController {
     
     
     func asyncGroup2() {
-        print("\n----- asyncGroup2 ---\n")
+        print("\n--- asyncGroup2 ---\n")
         let dispatchGroup = DispatchGroup()
         let queue = DispatchQueue(label: "com.skillbox.queues.serial")
         
@@ -141,7 +139,7 @@ class ViewController: UIViewController {
     
     
     func asyncUsual() {
-        print("\n----- asyncUsual ---\n")
+        print("\n--- asyncUsual ---\n")
         for i in 0...3 {
             let url = URL(string: imageURLs[i])
             let request = URLRequest(url: url!)
