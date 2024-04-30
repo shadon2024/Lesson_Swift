@@ -14,6 +14,8 @@ class ThreeScreenTwo: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemGreen
+        self.navigationController!.navigationBar.barTintColor = UIColor.red
+        UINavigationBar.appearance().barTintColor = UIColor.black
         
         setupViews()
         setupConstrains()

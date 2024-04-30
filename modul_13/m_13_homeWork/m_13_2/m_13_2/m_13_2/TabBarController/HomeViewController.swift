@@ -13,6 +13,7 @@ class HomeViewController: OneScreenOne {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemGreen
+        self.navigationController?.navigationBar.barTintColor = UIColor.red
 
     }
     
