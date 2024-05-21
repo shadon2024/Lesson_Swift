@@ -112,7 +112,7 @@ class ViewController: UIViewController {
         }
         
         resultTextView.snp.makeConstraints{ make in
-            make.top.equalTo(urlSessionButton.snp.bottom).offset(40)
+            make.top.equalTo(urlSessionButton.snp.bottom).offset(70)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
@@ -124,7 +124,7 @@ class ViewController: UIViewController {
 //        }
         
         activityIndicator.snp.makeConstraints { make in
-            make.top.equalTo(urlSessionButton.snp.bottom).offset(5)
+            make.top.equalTo(urlSessionButton.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             //make.bottom.equalTo(resultTextView.snp.top).offset(-3)
         }
@@ -181,7 +181,12 @@ class ViewController: UIViewController {
             return
         }
         
-        let urlString = "https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=\(movieId)"
+        guard let movieId1 = movieId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("Invalid movie ID encoding")
+            return
+        }
+        
+        let urlString = "https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=\(movieId1)"
         
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
@@ -264,19 +269,30 @@ class ViewController: UIViewController {
         //
         //    }
         
+        view.endEditing(true) // Скрытие клавиатуры
         
         guard let movieId = searchTextField.text, !movieId.isEmpty else {
                     print("Movie ID is empty")
                     return
                 }
                 
-                let urlString = "https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=\(movieId)"
+        guard let movieId1 = movieId.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            print("Invalid movie ID encoding")
+            return
+        }
+                let urlString = "https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=\(movieId1)"
                 
                 let headers: HTTPHeaders = [
                     "X-API-KEY": apiKey
                 ]
                 
+        activityIndicator.startAnimating() // Запуск индикатора загрузки
+        
                 AF.request(urlString, headers: headers).response { response in
+                    DispatchQueue.main.async {
+                        self.activityIndicator.stopAnimating() // Остановка индикатора загрузки
+                    }
+                    
                     if let error = response.error {
                         print("Error: \(error.localizedDescription)")
                         return
@@ -299,6 +315,8 @@ class ViewController: UIViewController {
     
     
 }
+
+
 
 
 
