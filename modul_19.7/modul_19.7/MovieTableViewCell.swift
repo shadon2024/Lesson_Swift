@@ -6,20 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class MovieTableViewCell: UITableViewCell {
     static let identifier = "MovieCell"
-
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,59 +21,65 @@ class MovieTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override var reuseIdentifier: String? {
-//        return "MovieCell"
-//    }
-
+    
     let filmId = UILabel()
-    let nameRu = UILabel()
+    let title = UILabel()
     let posterUrl = UIImageView()
     
     func setupViews() {
-        nameRu.translatesAutoresizingMaskIntoConstraints = false
+        title.translatesAutoresizingMaskIntoConstraints = false
         posterUrl.translatesAutoresizingMaskIntoConstraints = false
         posterUrl.contentMode = .scaleAspectFit
+        title.numberOfLines = 0
         
-        contentView.addSubview(nameRu)
+        contentView.addSubview(title)
         contentView.addSubview(posterUrl)
-        self.addSubview(nameRu)
+        self.addSubview(title)
         self.addSubview(posterUrl)
         
-        NSLayoutConstraint.activate([
-            posterUrl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            posterUrl.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            posterUrl.widthAnchor.constraint(equalToConstant: 50),
-            posterUrl.heightAnchor.constraint(equalToConstant: 75),
-            
-            nameRu.leadingAnchor.constraint(equalTo: posterUrl.trailingAnchor, constant: 10),
-            nameRu.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            nameRu.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-        ])
+        
+        
+        posterUrl.snp.makeConstraints { make in
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(10)
+            make.leading.equalTo(10)
+            make.height.equalTo(100)
+            make.width.equalTo(100)
+        }
+        
+        
+        title.snp.makeConstraints { make in
+            make.leading.equalTo(posterUrl.snp.trailing).offset(10)
+            make.centerY.equalTo(contentView.snp.centerY)
+            make.width.equalTo(200)
+        }
+
     }
     
     
-
+    
     
     
     func configure(with movie: Movie) {
-        filmId.text = movie.nameRu
+        title.text = movie.title
         
-        if let url = URL(string: movie.posterUrl) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    DispatchQueue.main.async {
-                        self.posterUrl.image = UIImage(data: data)
+        if let url = URL(string: movie.posterURL ?? "nil") {
+                    URLSession.shared.dataTask(with: url) { data, response, error in
+                        if let data = data {
+                            DispatchQueue.main.async {
+                                self.posterUrl.image = UIImage(data: data)
+                            }
+                        }
                     }
-                }
-            }
-//            DispatchQueue.global().async {
-//                if let data = try? Data(contentsOf: url) {
-//                    DispatchQueue.main.async {
-//                        self.posterUrl.image = UIImage(data: data)
-//                    }
-//                }
-//            }
+                    DispatchQueue.global().async {
+                        if let data = try? Data(contentsOf: url) {
+                            DispatchQueue.main.async {
+                                self.posterUrl.image = UIImage(data: data)
+                            }
+                        }
+                    }
         }
+        
     }
-
+    
+    
 }

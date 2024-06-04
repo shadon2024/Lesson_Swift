@@ -16,7 +16,8 @@
 		84ABD0B32C006C9500F09644 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD0B22C006C9500F09644 /* MovieTableViewCell.swift */; };
 		84ABD0B52C04572200F09644 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD0B42C04572200F09644 /* Movie.swift */; };
 		84ABD0B72C0457FF00F09644 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD0B62C0457FF00F09644 /* MovieDetailViewController.swift */; };
-		84ABD0B92C04A50000F09644 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD0B82C04A50000F09644 /* NetworkManager.swift */; };
+		84ABD1052C05992C00F09644 /* MovieFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD1042C05992C00F09644 /* MovieFilm.swift */; };
+		84ABD1072C0599BB00F09644 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ABD1062C0599BB00F09644 /* ApiManager.swift */; };
 		8595A2887FA2178F7950CD5A /* Pods_modul_19_7.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE1840F1653BDF57CFB520A /* Pods_modul_19_7.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +34,8 @@
 		84ABD0B22C006C9500F09644 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		84ABD0B42C04572200F09644 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		84ABD0B62C0457FF00F09644 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
-		84ABD0B82C04A50000F09644 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		84ABD1042C05992C00F09644 /* MovieFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFilm.swift; sourceTree = "<group>"; };
+		84ABD1062C0599BB00F09644 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		ABE1840F1653BDF57CFB520A /* Pods_modul_19_7.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_modul_19_7.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14D9416E5AF4FA16E3D5701 /* Pods-modul_19.7.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-modul_19.7.release.xcconfig"; path = "Target Support Files/Pods-modul_19.7/Pods-modul_19.7.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,9 +86,10 @@
 				84ABD0A02BFFA1B000F09644 /* SceneDelegate.swift */,
 				84ABD0A22BFFA1B000F09644 /* ViewController.swift */,
 				84ABD0B42C04572200F09644 /* Movie.swift */,
+				84ABD1042C05992C00F09644 /* MovieFilm.swift */,
+				84ABD1062C0599BB00F09644 /* ApiManager.swift */,
 				84ABD0B22C006C9500F09644 /* MovieTableViewCell.swift */,
 				84ABD0B62C0457FF00F09644 /* MovieDetailViewController.swift */,
-				84ABD0B82C04A50000F09644 /* NetworkManager.swift */,
 				84ABD0A42BFFA1B000F09644 /* Main.storyboard */,
 				84ABD0A72BFFA1B200F09644 /* Assets.xcassets */,
 				84ABD0A92BFFA1B200F09644 /* LaunchScreen.storyboard */,
@@ -218,10 +221,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84ABD1072C0599BB00F09644 /* ApiManager.swift in Sources */,
 				84ABD0A32BFFA1B000F09644 /* ViewController.swift in Sources */,
+				84ABD1052C05992C00F09644 /* MovieFilm.swift in Sources */,
 				84ABD09F2BFFA1B000F09644 /* AppDelegate.swift in Sources */,
 				84ABD0B32C006C9500F09644 /* MovieTableViewCell.swift in Sources */,
-				84ABD0B92C04A50000F09644 /* NetworkManager.swift in Sources */,
 				84ABD0A12BFFA1B000F09644 /* SceneDelegate.swift in Sources */,
 				84ABD0B72C0457FF00F09644 /* MovieDetailViewController.swift in Sources */,
 				84ABD0B52C04572200F09644 /* Movie.swift in Sources */,
